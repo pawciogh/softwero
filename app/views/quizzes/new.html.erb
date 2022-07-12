@@ -1,0 +1,35 @@
+<h1>Quiz#new</h1>
+<h1 class="title">Study page</h1>
+
+<%= form_tag quiz_path, data: { turbo: false } do  %>
+<div><%= collection_select(:course, :course_id, Course.all, :id, :title, {include_hidden: false}, {multiple: true, required: true}) %>
+</div>
+<!-- 
+  <input type="checkbox" name="levels[]" value="0"/> Level 0<br/>
+  <input type="checkbox" name="levels[]" value="1"/> Level 1<br/>
+  <input type="checkbox" name="levels[]" value="2"/> Level 2<br/>
+  <input type="checkbox" name="levels[]" value="3"/> Level 3<br/>
+  <input type="checkbox" name="levels[]" value="4"/> Level 4<br/>
+-->
+
+<h5 class="is-size-4 my-5">Additional options</h5>
+<p>How many questions?</p>
+    <select name="questions">
+      <option value="5" selected="selected">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="25">25</option>
+    </select>
+  
+<div class="mt-5">
+  <%= check_box_tag 'random', 'true', true %>
+   Random?
+   </div>
+        <div class="introduction">
+          You need to mark somethig. Try again...
+        </div>
+  <%= submit_tag "Start", class: 'button is-link my-5' %>
+<% end %>
+
+

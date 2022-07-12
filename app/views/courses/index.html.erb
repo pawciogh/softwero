@@ -1,0 +1,7 @@
+<h1 class="title">Choose one of the courses</h1>
+<ul>
+<% @courses.each do |course| %>
+<li><%= link_to course.title, course, class: 'button is-primary my-1' %></li>
+<% end %>
+</ul>
+

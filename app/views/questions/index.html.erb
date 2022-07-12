@@ -1,0 +1,15 @@
+<h1 class="title">Questions index</h1>
+<p>Number of questions: <%= @questions.count %></p>
+
+<% @questions.each do |question| %>
+    <ul>
+        <li><%= link_to question.content, question %>
+            <% question.answers.each do |answer| %>
+                , <%= answer.content %>
+            <% end %>
+            -> <%= question.counter %>
+        </li>
+      <% end %>
+    </ul>
+
+<%= link_to 'New Question', new_question_path, class: 'button is-primary my-5' %>

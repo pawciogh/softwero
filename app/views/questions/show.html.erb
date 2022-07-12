@@ -1,0 +1,21 @@
+<h1 class="title">Question show </h1>
+
+
+  <span class="bd-snippet-tag bd-is-example">
+    <%= @question.course.title %>
+  </span>
+
+
+  <span class="bd-snippet-tag bd-is-example">
+    <%= @question.category.name %>
+  </span>
+
+
+<h2 class="title mt-5"><%= @question.content %></h2>
+
+
+<% @question.answers.each do |answer| %>
+  <p><%= answer.content %></p>
+<% end %>
+
+<%= link_to 'Edit', edit_question_path, class: 'button is-primary mt-5' %>

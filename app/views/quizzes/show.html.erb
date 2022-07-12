@@ -1,0 +1,15 @@
+<h1 class="title">Quiz</h1>
+  <div data-controller="quiz">
+    <% @questions.each do |question| %>
+        <div data-quiz-target="slide">
+        <p class="is-size-3" data-quiz-target="question"><%= question.content %></p>
+        <input type="input"  data-action="keydown->quiz#submitted" data-quiz-target="input" class="input is-primary is-medium">
+        <p class="is-hidden" data-quiz-target="answer"><%= question.answers.first.content %></p>
+        <p class="is-hidden" data-quiz-target="id"><%= question.id %></p>
+      </div>
+    <% end %>   
+  
+      <div class="notification is-success" data-quiz-target="slide">
+         You have finished your quiz now... Good job!
+      </div>
+ </div>
