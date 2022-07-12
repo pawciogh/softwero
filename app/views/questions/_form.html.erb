@@ -22,8 +22,9 @@
 
      <div>
         <%= form.fields_for :answers do |a| %>
-          <%= a.label :content, style: 'display: block' %>
+          <%= a.label 'Answers', style: 'display: block' %>
           <%= a.text_field :content, class: 'input is-large' %>
+         <%= a.check_box :_destroy %>
         <% end %>
       </div>
 

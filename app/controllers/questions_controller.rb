@@ -66,7 +66,7 @@ def set_question
 end
 
 def question_params
-    params.require(:question).permit(:content, :counter, :course_id, :category_id, :some_param, answers_attributes: [:content])
+    params.require(:question).permit(:content, :counter, :course_id, :category_id, answers_attributes: [:id, :content, :_destroy])
 end
 
 
