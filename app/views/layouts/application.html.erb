@@ -13,7 +13,7 @@
   <body>
     <section class="section">
       <div class="container">
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-warning px-2" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
       <%= image_tag "programming.png" %>
@@ -32,7 +32,7 @@
       <%= link_to 'Courses', courses_path, class: 'navbar-item' %>
       <%= link_to 'Questions', questions_path, class: 'navbar-item' %>
       <%= link_to 'Answers', answers_path, class: 'navbar-item' %>
-      <%= link_to 'New Question', new_question_path, class: 'navbar-item' %>  
+      <%= link_to 'New Question', new_question_path, class: 'navbar-item' %>
       <%= link_to 'Quiz', quiz_path, class: 'navbar-item' %>  
     </div>
 
@@ -56,6 +56,8 @@
 <section>
 
         <%= yield %>
+
+  <%= link_to 'New Question', new_question_path, class: 'button is-danger mt-5' %>
       </div>
     </section>
   </body>
