@@ -1,0 +1,29 @@
+<h1 class="title">Edit answer</h1>
+
+<%= form_with(model: @answer) do |form| %>
+  <% if @answer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% @answer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.collection_select :question_id, Question.all, :id, :content , {}, {class: "dropdown-content my-1"} %>
+
+  <div class="mb-6">
+    <%= form.label :content %>
+    <%= form.text_field :content, class: 'input is-large'  %>
+  </div>
+
+
+
+
+  <div class="actions">
+    <%= form.submit class: 'button is-primary' %>
+  </div>
+<% end %>
