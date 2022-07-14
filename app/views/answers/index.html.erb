@@ -1,9 +1,8 @@
-<h1 class="title">Answers index</h1>
-
-<p>Number of answers: <%= @answers.count %></p>
-<ul>
-  <% @answers.each do |answer| %>
-      <li><%= link_to answer.content, answer %></li>
-  <% end %>
-</ul>
+<h1 class="is-size-3 mb-5">Answers index</h1>
+  <p class="mb-5">Number of answers: <%= @answers.count %></p>
+  <ul>
+    <% @answers.each do |answer| %>
+        <li><%= link_to answer.content, answer %></li>
+    <% end %>
+  </ul>
 
