@@ -21,8 +21,8 @@ def create
     
     respond_to do |format|
         if @question.save
-            format.html { redirect_to question_url(@question), notice: 'Flashacard was successfully created.' }
-            format.json { render :show, status: :created, location: @question }
+            format.html { redirect_to new_question_url(@question), notice: 'Question was successfully created.' }
+            format.json { render :new, status: :created, location: @question }
         else
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @question.errors, status: :unprocessable_entity }

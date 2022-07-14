@@ -49168,3 +49168,128 @@ Processing by QuizzesController#new as HTML
 Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.2ms | Allocations: 7996)
 
 
+Started GET "/" for ::1 at 2022-07-14 20:36:21 +0100
+Started GET "/" for ::1 at 2022-07-14 20:36:34 +0100
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CoursesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  ↳ app/views/courses/index.html.erb:3
+  Rendered courses/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 4975)
+  Rendered layout layouts/application.html.erb (Duration: 302.3ms | Allocations: 84438)
+Completed 200 OK in 319ms (Views: 302.4ms | ActiveRecord: 3.7ms | Allocations: 92182)
+
+
+Started GET "/questions/new" for ::1 at 2022-07-14 20:36:36 +0100
+Processing by QuestionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering questions/new.html.erb within layouts/application
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  ↳ app/views/questions/_form.html.erb:14
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/questions/_form.html.erb:16
+  Rendered questions/_form.html.erb (Duration: 319.0ms | Allocations: 346016)
+  Rendered questions/new.html.erb within layouts/application (Duration: 320.0ms | Allocations: 346288)
+  Rendered layout layouts/application.html.erb (Duration: 326.3ms | Allocations: 351960)
+Completed 200 OK in 357ms (Views: 325.0ms | ActiveRecord: 6.8ms | Allocations: 370466)
+
+
+Started POST "/questions" for ::1 at 2022-07-14 20:36:40 +0100
+Processing by QuestionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "question"=>{"course_id"=>"2", "category_id"=>"1", "content"=>"d", "answers_attributes"=>{"0"=>{"content"=>"d", "_destroy"=>"0"}}}, "commit"=>"Create Question"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/questions_controller.rb:23:in `block in create'
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:23:in `block in create'
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:23:in `block in create'
+  [1m[36mQuestion Create (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("content", "counter", "course_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["content", "d"], ["counter", 0], ["course_id", 2], ["category_id", 1], ["created_at", "2022-07-14 19:36:40.940916"], ["updated_at", "2022-07-14 19:36:40.940916"]]
+  ↳ app/controllers/questions_controller.rb:23:in `block in create'
+  [1m[36mAnswer Create (0.5ms)[0m  [1m[32mINSERT INTO "answers" ("content", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "d"], ["question_id", 14], ["created_at", "2022-07-14 19:36:40.943376"], ["updated_at", "2022-07-14 19:36:40.943376"]]
+  ↳ app/controllers/questions_controller.rb:23:in `block in create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/questions_controller.rb:23:in `block in create'
+Redirected to http://localhost:3000/questions/14
+Completed 302 Found in 15ms (ActiveRecord: 2.6ms | Allocations: 11003)
+
+
+Started GET "/questions/14" for ::1 at 2022-07-14 20:36:40 +0100
+Processing by QuestionsController#show as TURBO_STREAM
+  Parameters: {"id"=>"14"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:65:in `set_question'
+  Rendering layout layouts/application.html.erb
+  Rendering questions/show.html.erb within layouts/application
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/questions/show.html.erb:4
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/questions/show.html.erb:9
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 14]]
+  ↳ app/views/questions/show.html.erb:16
+  Rendered questions/show.html.erb within layouts/application (Duration: 5.5ms | Allocations: 3054)
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | Allocations: 8685)
+Completed 200 OK in 15ms (Views: 11.8ms | ActiveRecord: 0.9ms | Allocations: 10273)
+
+
+Started GET "/questions/new" for ::1 at 2022-07-14 20:37:02 +0100
+Processing by QuestionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering questions/new.html.erb within layouts/application
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  ↳ app/views/questions/_form.html.erb:14
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/questions/_form.html.erb:16
+  Rendered questions/_form.html.erb (Duration: 30.3ms | Allocations: 6615)
+  Rendered questions/new.html.erb within layouts/application (Duration: 30.5ms | Allocations: 6692)
+  Rendered layout layouts/application.html.erb (Duration: 49.9ms | Allocations: 25788)
+Completed 200 OK in 69ms (Views: 46.7ms | ActiveRecord: 8.6ms | Allocations: 35775)
+
+
+Started POST "/questions" for ::1 at 2022-07-14 20:37:06 +0100
+Processing by QuestionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "question"=>{"course_id"=>"1", "category_id"=>"1", "content"=>"d", "answers_attributes"=>{"0"=>{"content"=>"d", "_destroy"=>"0"}}}, "commit"=>"Create Question"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/questions_controller.rb:23:in `block in create'
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:23:in `block in create'
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:23:in `block in create'
+  [1m[36mQuestion Create (0.5ms)[0m  [1m[32mINSERT INTO "questions" ("content", "counter", "course_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["content", "d"], ["counter", 0], ["course_id", 1], ["category_id", 1], ["created_at", "2022-07-14 19:37:06.866798"], ["updated_at", "2022-07-14 19:37:06.866798"]]
+  ↳ app/controllers/questions_controller.rb:23:in `block in create'
+  [1m[36mAnswer Create (0.3ms)[0m  [1m[32mINSERT INTO "answers" ("content", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "d"], ["question_id", 15], ["created_at", "2022-07-14 19:37:06.868855"], ["updated_at", "2022-07-14 19:37:06.868855"]]
+  ↳ app/controllers/questions_controller.rb:23:in `block in create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/questions_controller.rb:23:in `block in create'
+Redirected to http://localhost:3000/questions/new.15
+Completed 302 Found in 13ms (ActiveRecord: 1.7ms | Allocations: 8065)
+
+
+Started GET "/questions/new.15" for ::1 at 2022-07-14 20:37:06 +0100
+Processing by QuestionsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering questions/new.html.erb within layouts/application
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  ↳ app/views/questions/_form.html.erb:14
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/questions/_form.html.erb:16
+  Rendered questions/_form.html.erb (Duration: 4.3ms | Allocations: 2766)
+  Rendered questions/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2839)
+  Rendered layout layouts/application.html.erb (Duration: 11.5ms | Allocations: 8392)
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.4ms | Allocations: 9009)
+
+
+Started GET "/questions/new.15" for ::1 at 2022-07-14 20:37:06 +0100
+Processing by QuestionsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering questions/new.html.erb within layouts/application
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  ↳ app/views/questions/_form.html.erb:14
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/questions/_form.html.erb:16
+  Rendered questions/_form.html.erb (Duration: 4.4ms | Allocations: 2770)
+  Rendered questions/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2843)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 8267)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.4ms | Allocations: 8801)
+
+
